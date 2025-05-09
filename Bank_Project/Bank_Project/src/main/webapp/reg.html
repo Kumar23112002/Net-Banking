@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration</title>
+
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 40px;
+	color: #fff;
+	font-size: 32px;
+	text-shadow: 1px 1px 2px #00000050;
+}
+
+form {
+	background-color: #ffffff;
+	max-width: 500px;
+	margin: 40px auto;
+	padding: 30px 40px;
+	border-radius: 12px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s ease-in-out;
+}
+
+label {
+	display: block;
+	margin-bottom: 6px;
+	font-weight: bold;
+	color: #333;
+	margin-top: 15px;
+}
+
+input, select {
+	width: 100%;
+	padding: 12px;
+	margin-top: 5px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-size: 14px;
+	transition: border-color 0.2s;
+}
+
+input:focus, select:focus {
+	border-color: #007bff;
+	outline: none;
+}
+
+input[type="submit"], input[type="reset"] {
+	width: 48%;
+	margin-top: 25px;
+	padding: 12px;
+	font-size: 16px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.2s;
+}
+
+input[type="submit"] {
+	background-color: #28a745;
+	color: white;
+}
+
+input[type="reset"] {
+	background-color: #dc3545;
+	color: white;
+	float: right;
+}
+
+input[type="submit"]:hover {
+	background-color: #218838;
+	transform: scale(1.02);
+}
+
+input[type="reset"]:hover {
+	background-color: #c82333;
+	transform: scale(1.02);
+}
+
+@media screen and (max-width: 600px) {
+	form {
+		margin: 20px;
+		padding: 20px;
+	}
+	input[type="submit"], input[type="reset"] {
+		width: 100%;
+		margin: 10px 0;
+		float: none;
+	}
+}
+</style>
+
+<script type="text/javascript">
+	window.onload = function() {
+		document.forms["myform"].onsubmit = function() {
+			var pwd = document.forms["myform"]["password"].value;
+			var cpwd = document.forms["myform"]["conpassword"].value;
+			if (pwd !== cpwd) {
+				alert("Passwords do not match");
+				return false;
+			}
+		};
+	};
+</script>
+
+
+</head>
+<body>
+	<h1>Registration Form</h1>
+	<form name="myform" action="raj" method="post"
+		enctype="multipart/form-data">
+
+		<label>Id no : </label> <input type="text" name="idnum" required />
+		<label>First Name: </label> <input type="text" name="Fname" required />
+		<label>Last Name : </label> <input type="text" name="Lname" required />
+		<label>Email Id : </label> <input type="email" name="mail" required	pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+		<label>Password	: </label> <input type="password" name="password" pattern="(?=.*\d)(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}"
+			title="Must contain at least 8 characters, one uppercase letter, one number, and one special character"	required />
+		<label>Confirm Password : </label> <input type="password" name="conpassword" required /><br> <br>
+		<label>Phone Number : </label> <input type="tel" name="mobileno" pattern="[0-9]{10}" minlength="10" maxlength="10" required />
+		<label>TPIN (4-digit PIN) :</label> <input type="text" name="tpin" pattern="\d{4}" title="Enter a 4-digit numeric TPIN" required />
+		<label>Enter Address : </label> <input type="text" name="ad" required />
+		<label>Photo : </label><input type="file" name="photo" required />
+		<label>Role : </label> <select name="role">
+			<option value="admin">admin</option>
+			<option value="user">user</option>
+		</select><br> <br> <input type="submit" name="submit"
+			value="Register" /> <input type="reset" name="reset" value="Clear" />
+	</form>
+
+</body>
+</html>
